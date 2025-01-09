@@ -1,26 +1,58 @@
 body {
-    // background-color: aqua;
+  // background-color: aqua;
 }
 .container {
-    border: 1px solid #000;
-    
-  }
-  
-  .content {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    padding: 20px;
+  border: 1px solid #000;
+}
 
-    &__card {
-        background-color: rgb(252, 247, 247);
-        width: 150px;
-        height: 150px;
-        border:2px dotted #d4d4d4;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 62px;
+.card__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+
+  .card__item {
+    background-color: rgb(252, 247, 247);
+    width: 150px;
+    height: 150px;
+    border: 2px dotted #d4d4d4;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    font-size: 62px;
+    position: relative;
+
+    transition: transform 1s ease-out;
+    transform-style: preserve-3d;
+    transform-origin: center right;
+
+    .card__front,
+    .card__back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden; //뒷면 안보이게
+    }
+
+    .card__front {
+      background-color: aqua;
+    }
+
+    .card__back {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: rotateY(180deg);
     }
   }
-  
+}
+
+.is-flipped {
+  transform: translateX(-100%) rotateY(-180deg);
+}
+
+// .card__front .front-active{
+//   background-color: none !important;
+//   z-index: 0;
+// }
